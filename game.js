@@ -33,6 +33,7 @@ let gridData = [];
 // 0 = Up, 1 = Right, 2 = Down, 3 = Left
 let direction = 0;
 let snakeSize = 3;
+let snakeData = [];
 
 function setUpGrid() {
 	for (let i = 0; i < gridSize; i++) {
@@ -50,67 +51,71 @@ function setUpSnake() {
 	gridData[gridMiddle][gridMiddle] = 3;
 	gridData[gridMiddle][gridMiddle + 1] = 40;
 	gridData[gridMiddle][gridMiddle + 2] = 41;
+	gridData[gridMiddle][gridMiddle + 3] = 42;
 }
 
 function moveSnake() {
+	let newGridData = gridData.map((item) => {
+		return item.slice();
+	});
 	let prevHeadX;
 	let prevHeadY;
-	let prevBodyX = [];
-	let prevBodyY = [];
-	let movementPerformed = false;
-	console.log(movementPerformed);
+	let bodyParts = [];
 	gridData.forEach((row, xi) => {
 		row.forEach((tile, yi) => {
-			if (tile === 3 && !movementPerformed) {
+			if (tile === 3) {
 				if (direction === 0) {
 					console.log("UP");
 					prevHeadX = xi;
 					prevHeadY = yi;
-					gridData[xi][yi] = 0;
-					gridData[xi][yi - 1] = 3;
+					newGridData[xi][yi] = 0;
+					newGridData[xi][yi - 1] = 3;
 				}
 				if (direction === 1) {
 					console.log("RIGHT");
 					prevHeadX = xi;
 					prevHeadY = yi;
-					gridData[xi][yi] = 0;
-					gridData[xi + 1][yi] = 3;
+					newGridData[xi][yi] = 0;
+					newGridData[xi + 1][yi] = 3;
 				}
 				if (direction === 2) {
 					console.log("DOWN");
 					prevHeadX = xi;
 					prevHeadY = yi;
-					gridData[xi][yi] = 0;
-					gridData[xi][yi + 1] = 3;
+					newGridData[xi][yi] = 0;
+					newGridData[xi][yi + 1] = 3;
 				}
 				if (direction === 3) {
 					console.log("LEFT");
 					prevHeadX = xi;
 					prevHeadY = yi;
-					gridData[xi][yi] = 0;
-					gridData[xi - 1][yi] = 3;
+					newGridData[xi][yi] = 0;
+					newGridData[xi - 1][yi] = 3;
 				}
-				movementPerformed = true;
 			}
-			if (parseInt(tile.toString().charAt(0)) === 4 && !movementPerformed) {
-				if (tile === 40) {
-					gridData[xi][yi] = 0;
-					gridData[prevHeadX][prevHeadY] = 40;
-					prevBodyX[0] = xi;
-					prevBodyY[0] = yi;
-				} else {
-					gridData[xi][yi] = 0;
-					gridData[prevBodyX[parseInt(tile.toString().substring(1)) - 1]][
-						prevBodyY[parseInt(tile.toString().substring(1)) - 1]
-					] = parseInt(`4${parseInt(tile.toString().substring(1))}`);
-					prevBodyX[parseInt(tile.toString().substring(1))] = xi;
-					prevBodyY[parseInt(tile.toString().substring(1))] = yi;
-				}
+			if (parseInt(tile.toString().charAt(0)) === 4) {
+				bodyParts[parseInt(tile.toString().substring(1))] = {
+					id: parseInt(tile.toString().substring(1)),
+					x: xi,
+					y: yi,
+				};
+				newGridData[xi][yi] = 0;
 			}
 		});
-		draw();
 	});
-	//console.log(prevBodyX, prevBodyY);
+	for (let i = 0; i < bodyParts.length; i++) {
+		if (i === 0) {
+			newGridData[prevHeadX][prevHeadY] = parseInt(`4${bodyParts[i].id}`);
+		} else {
+			newGridData[bodyParts[i - 1].x][bodyParts[i - 1].y] = parseInt(
+				`4${bodyParts[i].id}`
+			);
+		}
+	}
+	gridData = newGridData.map((item) => {
+		return item.slice();
+	});
+	draw();
 }
 
 setUpCanvas();
