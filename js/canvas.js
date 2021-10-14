@@ -24,7 +24,6 @@ function setUpGridBorders() {
 function draw() {
 	gridData.forEach((row, xi) => {
 		row.forEach((tile, yi) => {
-			//console.log(tile, xi, yi);
 			if (tile.toString().startsWith(4)) {
 				ctx.fillStyle = tileTypes[tile.toString().charAt(0)].color;
 			} else {

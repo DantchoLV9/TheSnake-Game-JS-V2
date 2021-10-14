@@ -69,7 +69,6 @@ function moveSnake() {
 			grow(newGridData, bodyParts);
 			shouldGrow = false;
 		}
-		console.log(bodyParts);
 		gridData = newGridData.map((item) => {
 			return item.slice();
 		});
@@ -94,7 +93,6 @@ function grow(newGridData, bodyParts) {
 	newGridData[bodyParts[bodyParts.length - 1].x][
 		bodyParts[bodyParts.length - 1].y
 	] = parseInt(`4${bodyParts[bodyParts.length - 1].id + 1}`);
-	
 }
 
 function die() {
