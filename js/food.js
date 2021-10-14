@@ -11,5 +11,5 @@ function generateFood() {
 
 function eatFood() {
 	foodExists = false;
-	grow();
+	shouldGrow = true;
 }

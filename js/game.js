@@ -32,11 +32,10 @@ let tileSize;
 let gridData = [];
 // 0 = Up, 1 = Right, 2 = Down, 3 = Left
 let direction = 0;
-let snakeSize = 3;
-let snakeData = [];
 let foodExists = false;
 let gameTimer;
 let alive = true;
+let shouldGrow = false;
 
 function setUpGrid() {
 	for (let i = 0; i < gridSize; i++) {
