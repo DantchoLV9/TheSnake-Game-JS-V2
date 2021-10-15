@@ -2,10 +2,10 @@ const gameCanvas = document.querySelector("#game-canvas");
 const scoreSpan = document.querySelector("#score-span");
 const ctx = gameCanvas.getContext("2d");
 const gridSize = 30;
-const minSpeed = 500;
+const minSpeed = 300;
 const maxSpeed = 125;
 const scorePerFood = 100;
-const speedLimitScore = 5000;
+const speedLimitScore = 3000;
 const tileTypes = [
 	{
 		// Empty Tile
@@ -42,7 +42,7 @@ let gameTimer;
 let alive = true;
 let shouldGrow = false;
 let score = 0;
-let timer = 500;
+let timer = 300;
 let inputLocked = false;
 
 document.addEventListener("keydown", (e) => {

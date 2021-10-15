@@ -98,5 +98,7 @@ function grow(newGridData, bodyParts) {
 function die() {
 	alive = false;
 	clearInterval(gameTimer);
-	alert("You died");
+	if (confirm(`You died\nScore: ${score}\nDo you want to play again?`)) {
+		location.reload();
+	}
 }
