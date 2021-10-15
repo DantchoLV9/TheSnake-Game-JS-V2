@@ -12,4 +12,10 @@ function generateFood() {
 function eatFood() {
 	foodExists = false;
 	shouldGrow = true;
+	score += scorePerFood;
+	if (timer > maxSpeed) {
+		timer =
+			timer -
+			minSpeed / (minSpeed / maxSpeed) / (speedLimitScore / scorePerFood);
+	}
 }

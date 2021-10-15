@@ -22,6 +22,13 @@ function setUpGridBorders() {
 }
 
 function draw() {
+	// Clear the canvas before redrawing
+	ctx.clearRect(
+		tileSize,
+		tileSize,
+		tileSize * gridSize - 1,
+		tileSize * gridSize - 1
+	);
 	gridData.forEach((row, xi) => {
 		row.forEach((tile, yi) => {
 			if (tile.toString().startsWith(4)) {

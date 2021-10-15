@@ -4,14 +4,106 @@
 	box-sizing: border-box;
 }
 
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	min-height: 100vh;
+	font-family: "Open Sans", sans-serif;
+}
+
+.heading {
+	font-weight: 700;
+}
+
+.heading span {
+	padding: 0.4rem;
+	border-radius: 5px;
+	background: rgb(255, 196, 0);
+}
+
 .canvas-wrapper {
-	width: 100%;
+	width: auto;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	margin: 2rem;
 }
 
 #game-canvas {
-	width: 50%;
+	max-width: 100%;
+	max-height: 75vh;
 	aspect-ratio: 1;
+}
+
+.score-wrapper p {
+	font-weight: 600;
+	font-size: 1.4rem;
+}
+
+.mobile-controls {
+	margin-block: 2rem;
+	display: none;
+	grid-template-areas:
+		". up-button ."
+		"left-button middle-circle right-button"
+		". down-button .";
+	justify-items: center;
+	align-items: center;
+}
+
+.mobile-controls button {
+	background: none;
+	border: none;
+	cursor: pointer;
+	border-radius: 50%;
+}
+
+.mobile-controls button:hover {
+	background: rgb(223, 223, 223);
+}
+
+.control-icon {
+	width: 3.5rem;
+	height: 3.5rem;
+}
+
+.up-button {
+	grid-area: up-button;
+}
+
+.right-button {
+	grid-area: right-button;
+}
+
+.down-button {
+	grid-area: down-button;
+}
+
+.left-button {
+	grid-area: left-button;
+}
+
+.middle-circle {
+	grid-area: middle-circle;
+	width: 1rem;
+	height: 1rem;
+	background: black;
+	border-radius: 50%;
+}
+
+@media (max-width: 780px) {
+	body {
+		justify-content: start;
+		padding-top: 2rem;
+	}
+	.canvas-wrapper {
+		margin: 0.2rem;
+		margin-top: 2rem;
+		margin-bottom: 0.5rem;
+	}
+	.mobile-controls {
+		display: grid;
+	}
 }

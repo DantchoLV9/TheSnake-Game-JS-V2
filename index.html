@@ -4,16 +4,39 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>The Snake Game - JS Version 2</title>
+        <title>Snake JS</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
+        <h1 class="heading">Snake <span>JS</span></h1>
         <div class="canvas-wrapper">
-            <canvas id="game-canvas"></canvas>
+            <canvas id="game-canvas" width="1000" height="1000"></canvas>
         </div>
-        <script src="js/canvas.js"></script>
-        <script src="js/snake.js"></script>
-        <script src="js/food.js"></script>
-        <script src="js/game.js"></script>
+        <div class="score-wrapper">
+            <p>Score: <span id="score-span"></span></p>
+        </div>
+        <div class="mobile-controls">
+            <button class="up-button" aria-label="control up">
+                <svg class="control-icon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd"></path></svg>
+            </button>
+            <button class="right-button" aria-label="control right">
+                <svg class="control-icon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+            </button>
+            <div class="middle-circle"></div>
+            <button class="down-button" aria-label="control down">
+                <svg class="control-icon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+            </button>
+            <button class="left-button" aria-label="control left">
+                <svg class="control-icon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+            </button>
+        </div>
+        <script src="main.js"></script>
+        <script src="gameJs/canvas.js"></script>
+        <script src="gameJs/snake.js"></script>
+        <script src="gameJs/food.js"></script>
+        <script src="gameJs/game.js"></script>
     </body>
 </html>
